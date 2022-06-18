@@ -1,0 +1,170 @@
+//
+//  MapViewController.swift
+//  GBMap
+//
+//  Created by Павел Заруцков on 11.06.2022.
+//
+
+import UIKit
+import GoogleMaps
+import CoreLocation
+
+class MapViewController: UIViewController {
+    
+    // MARK: - Propesties
+    
+    var route: GMSPolyline?
+    var routePath: GMSMutablePath?
+    var currentLocation = CLLocationCoordinate2D(latitude: 59.939095, longitude: 30.315868)
+    var locationManager: CLLocationManager?
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var mapView: GMSMapView!
+    
+    
+    // MARK: - Life cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        createNavBarButton()
+        configureLocationManager()
+        setupCamera(location: currentLocation)
+        updateCurrentLocation()
+    }
+    
+    // MARK: - Configure route
+    
+    private func setupRoute() {
+        mapView.clear()
+        route?.map = nil
+        route = GMSPolyline()
+        route?.strokeColor = .red
+        route?.strokeWidth = 10.0
+        routePath = GMSMutablePath()
+        route?.map = mapView
+    }
+    
+    private func removeRoute() {
+        route?.map = nil
+        routePath?.removeAllCoordinates()
+    }
+    
+    // MARK: - Create navigationBar button
+    
+    private func createNavBarButton() {
+        let updateButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(updateButtonTapped))
+        let loadButton = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(loadButtonTapped))
+        
+        let playButton = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(playButtonTapped))
+        let stopButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(stopButtonTapped))
+        
+        navigationItem.rightBarButtonItems = [updateButton, loadButton]
+        navigationItem.leftBarButtonItems = [playButton, stopButton]
+    }
+    
+    @objc func updateButtonTapped(sender: UIButton) {
+        updateCurrentLocation()
+    }
+    
+    @objc func loadButtonTapped(sender: UIButton) {
+        let newRoute = GMSPolyline()
+        let newPath = GMSMutablePath()
+        newRoute.strokeColor = .blue
+        newRoute.strokeWidth = 10.0
+        locationManager?.stopUpdatingLocation()
+        let locations = RealmService.shared.loadListOfLocation()
+        routePath?.removeAllCoordinates()
+        for i in 0..<locations.count {
+            let coordinate = CLLocationCoordinate2D(latitude: locations[i].latitude, longitude: locations[i].longitude)
+            newPath.insert(coordinate, at: UInt(locations[i]._number))
+        }
+        newRoute.path = newPath
+        newRoute.map = mapView
+        let bounds = GMSCoordinateBounds(path: newPath)
+        mapView.animate(with: GMSCameraUpdate.fit(bounds))
+    }
+    
+    @objc func playButtonTapped(sender: UIButton) {
+        setupRoute()
+        locationManager?.startUpdatingLocation()
+    }
+    
+    @objc func stopButtonTapped(sender: UIButton) {
+        locationManager?.stopUpdatingLocation()
+        RealmService.shared.deleteAllLocations()
+        guard let pointsCount = routePath?.count() else { return }
+        var locations = Array<Location>()
+        for i in 0..<pointsCount {
+            guard let point = routePath?.coordinate(at: i) else { return }
+            let location = Location()
+            location.longitude = point.longitude
+            location.latitude = point.latitude
+            location._number = Int(i)
+            locations.append(location)
+        }
+        RealmService.shared.saveList(locations)
+        mapView.clear()
+    }
+}
+
+// MARK: - Extensions CLLocationManagerDelegate
+
+extension MapViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+        routePath?.add(location.coordinate)
+        route?.path = routePath
+        let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 15)
+        mapView.animate(to: position)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
+    }
+}
+
+extension MapViewController: GMSMapViewDelegate {
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+    }
+}
+
+// MARK: - Configure location
+
+extension MapViewController {
+    private func configureLocationManager() {
+        locationManager = CLLocationManager()
+        locationManager?.allowsBackgroundLocationUpdates = true
+        locationManager?.pausesLocationUpdatesAutomatically = false
+        locationManager?.startMonitoringSignificantLocationChanges()
+        locationManager?.requestWhenInUseAuthorization()
+        locationManager?.delegate = self
+    }
+    
+    private func updateCurrentLocation() {
+        locationManager?.requestLocation()
+        guard let location = locationManager?.location?.coordinate else {
+            return
+        }
+        currentLocation = location
+        updateCamera(location: location)
+        createMark(location: location)
+    }
+    
+    private func setupCamera(location: CLLocationCoordinate2D) {
+        mapView.camera = GMSCameraPosition.camera(withTarget: location, zoom:14)
+    }
+    
+    private func updateCamera(location: CLLocationCoordinate2D) {
+        mapView.animate(toLocation: location)
+    }
+    
+    private func createMark(location: CLLocationCoordinate2D) {
+        let marker = GMSMarker(position: location)
+        marker.map = mapView
+    }
+}
