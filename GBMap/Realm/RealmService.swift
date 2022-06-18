@@ -64,4 +64,42 @@ final class RealmService {
             print(error)
         }
     }
+    
+    func userCredentialsExists(login: String) -> Bool {
+        do {
+            let realm = try Realm(configuration: configuration)
+            let users = realm.objects(User.self).map {$0}
+            var result = false
+            for user in users {
+                if user._login == login {
+                    result = true
+                } else {
+                    result = false
+                }
+            }
+            return result
+        } catch {
+            print(error)
+            return false
+        }
+    }
+    
+    func authorization(login: String, password: String) -> Bool {
+        do {
+            let realm = try Realm(configuration: configuration)
+            let users = realm.objects(User.self)
+            var result = false
+            for user in users {
+                if user._login == login && user.password == password {
+                    result = true
+                } else {
+                    result = false
+                }
+            }
+            return result
+        } catch {
+            print(error)
+            return false
+        }
+    }
 }

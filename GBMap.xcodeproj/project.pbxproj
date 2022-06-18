@@ -17,6 +17,9 @@
 		A2ACCC7E285E4438002A2EFE /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACCC7D285E4438002A2EFE /* RealmService.swift */; };
 		A2ACCC85285E44BD002A2EFE /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACCC84285E44BD002A2EFE /* Location.swift */; };
 		A2ACCC87285E46E2002A2EFE /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACCC86285E46E2002A2EFE /* MapViewModel.swift */; };
+		A2ACCC8A285E4BD1002A2EFE /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACCC89285E4BD1002A2EFE /* Router.swift */; };
+		A2ACCC8C285E4BF1002A2EFE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACCC8B285E4BF1002A2EFE /* User.swift */; };
+		A2ACCC90285E4C8A002A2EFE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACCC8F285E4C8A002A2EFE /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,9 @@
 		A2ACCC7D285E4438002A2EFE /* RealmService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		A2ACCC84285E44BD002A2EFE /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		A2ACCC86285E46E2002A2EFE /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		A2ACCC89285E4BD1002A2EFE /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		A2ACCC8B285E4BF1002A2EFE /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A2ACCC8F285E4C8A002A2EFE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D0300D21E12852A44E1993B9 /* Pods_GBMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GBMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -71,8 +77,9 @@
 			children = (
 				A29E85E42854F975003FF0CB /* AppDelegate.swift */,
 				A29E85E62854F975003FF0CB /* SceneDelegate.swift */,
-				A29E85E82854F975003FF0CB /* MapViewController.swift */,
-				A2ACCC86285E46E2002A2EFE /* MapViewModel.swift */,
+				A2ACCC88285E4BC5002A2EFE /* Router */,
+				A2ACCC8E285E4C7B002A2EFE /* LoginView */,
+				A2ACCC8D285E4C11002A2EFE /* MapView */,
 				A2ACCC7F285E447C002A2EFE /* Realm */,
 				A29E85EA2854F975003FF0CB /* Main.storyboard */,
 				A29E85ED2854F978003FF0CB /* Assets.xcassets */,
@@ -87,8 +94,34 @@
 			children = (
 				A2ACCC7D285E4438002A2EFE /* RealmService.swift */,
 				A2ACCC84285E44BD002A2EFE /* Location.swift */,
+				A2ACCC8B285E4BF1002A2EFE /* User.swift */,
 			);
 			path = Realm;
+			sourceTree = "<group>";
+		};
+		A2ACCC88285E4BC5002A2EFE /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				A2ACCC89285E4BD1002A2EFE /* Router.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		A2ACCC8D285E4C11002A2EFE /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				A29E85E82854F975003FF0CB /* MapViewController.swift */,
+				A2ACCC86285E46E2002A2EFE /* MapViewModel.swift */,
+			);
+			path = MapView;
+			sourceTree = "<group>";
+		};
+		A2ACCC8E285E4C7B002A2EFE /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				A2ACCC8F285E4C8A002A2EFE /* LoginViewController.swift */,
+			);
+			path = LoginView;
 			sourceTree = "<group>";
 		};
 		B9461E78CD2CD01CB02D2170 /* Pods */ = {
@@ -241,9 +274,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2ACCC90285E4C8A002A2EFE /* LoginViewController.swift in Sources */,
 				A29E85E92854F975003FF0CB /* MapViewController.swift in Sources */,
 				A29E85E52854F975003FF0CB /* AppDelegate.swift in Sources */,
 				A2ACCC85285E44BD002A2EFE /* Location.swift in Sources */,
+				A2ACCC8A285E4BD1002A2EFE /* Router.swift in Sources */,
+				A2ACCC8C285E4BF1002A2EFE /* User.swift in Sources */,
 				A29E85E72854F975003FF0CB /* SceneDelegate.swift in Sources */,
 				A2ACCC7E285E4438002A2EFE /* RealmService.swift in Sources */,
 				A2ACCC87285E46E2002A2EFE /* MapViewModel.swift in Sources */,
