@@ -10,10 +10,13 @@
 		0919D787630F59AE00ABA40F /* Pods_GBMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0300D21E12852A44E1993B9 /* Pods_GBMap.framework */; };
 		A29E85E52854F975003FF0CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29E85E42854F975003FF0CB /* AppDelegate.swift */; };
 		A29E85E72854F975003FF0CB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29E85E62854F975003FF0CB /* SceneDelegate.swift */; };
-		A29E85E92854F975003FF0CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29E85E82854F975003FF0CB /* ViewController.swift */; };
+		A29E85E92854F975003FF0CB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29E85E82854F975003FF0CB /* MapViewController.swift */; };
 		A29E85EC2854F975003FF0CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A29E85EA2854F975003FF0CB /* Main.storyboard */; };
 		A29E85EE2854F978003FF0CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A29E85ED2854F978003FF0CB /* Assets.xcassets */; };
 		A29E85F12854F978003FF0CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A29E85EF2854F978003FF0CB /* LaunchScreen.storyboard */; };
+		A2ACCC7E285E4438002A2EFE /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACCC7D285E4438002A2EFE /* RealmService.swift */; };
+		A2ACCC85285E44BD002A2EFE /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACCC84285E44BD002A2EFE /* Location.swift */; };
+		A2ACCC87285E46E2002A2EFE /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACCC86285E46E2002A2EFE /* MapViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,11 +25,14 @@
 		A29E85E12854F975003FF0CB /* GBMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A29E85E42854F975003FF0CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A29E85E62854F975003FF0CB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A29E85E82854F975003FF0CB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A29E85E82854F975003FF0CB /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A29E85EB2854F975003FF0CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A29E85ED2854F978003FF0CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A29E85F02854F978003FF0CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A29E85F22854F978003FF0CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2ACCC7D285E4438002A2EFE /* RealmService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
+		A2ACCC84285E44BD002A2EFE /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		A2ACCC86285E46E2002A2EFE /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		D0300D21E12852A44E1993B9 /* Pods_GBMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GBMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -65,7 +71,9 @@
 			children = (
 				A29E85E42854F975003FF0CB /* AppDelegate.swift */,
 				A29E85E62854F975003FF0CB /* SceneDelegate.swift */,
-				A29E85E82854F975003FF0CB /* ViewController.swift */,
+				A29E85E82854F975003FF0CB /* MapViewController.swift */,
+				A2ACCC86285E46E2002A2EFE /* MapViewModel.swift */,
+				A2ACCC7F285E447C002A2EFE /* Realm */,
 				A29E85EA2854F975003FF0CB /* Main.storyboard */,
 				A29E85ED2854F978003FF0CB /* Assets.xcassets */,
 				A29E85EF2854F978003FF0CB /* LaunchScreen.storyboard */,
@@ -74,13 +82,21 @@
 			path = GBMap;
 			sourceTree = "<group>";
 		};
+		A2ACCC7F285E447C002A2EFE /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				A2ACCC7D285E4438002A2EFE /* RealmService.swift */,
+				A2ACCC84285E44BD002A2EFE /* Location.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 		B9461E78CD2CD01CB02D2170 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				0C3BF42C10987D54E0F84403 /* Pods-GBMap.debug.xcconfig */,
 				63767B065ECD1DA2B42D4628 /* Pods-GBMap.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -104,6 +120,7 @@
 				A29E85DE2854F975003FF0CB /* Frameworks */,
 				A29E85DF2854F975003FF0CB /* Resources */,
 				879E284BE3723EBE8B85C02D /* [CP] Copy Pods Resources */,
+				BF1CF907445E240123F48A33 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -200,6 +217,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GBMap/Pods-GBMap-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		BF1CF907445E240123F48A33 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GBMap/Pods-GBMap-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GBMap/Pods-GBMap-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GBMap/Pods-GBMap-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -207,9 +241,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A29E85E92854F975003FF0CB /* ViewController.swift in Sources */,
+				A29E85E92854F975003FF0CB /* MapViewController.swift in Sources */,
 				A29E85E52854F975003FF0CB /* AppDelegate.swift in Sources */,
+				A2ACCC85285E44BD002A2EFE /* Location.swift in Sources */,
 				A29E85E72854F975003FF0CB /* SceneDelegate.swift in Sources */,
+				A2ACCC7E285E4438002A2EFE /* RealmService.swift in Sources */,
+				A2ACCC87285E46E2002A2EFE /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +397,7 @@
 				DEVELOPMENT_TEAM = W7LU6YZGVJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GBMap/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = TEST;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -389,6 +427,7 @@
 				DEVELOPMENT_TEAM = W7LU6YZGVJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GBMap/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = TEST;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
