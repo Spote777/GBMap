@@ -10,10 +10,13 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
+    var notificationManager = NotificationManager.instance
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let _ = (scene as? UIWindowScene) else { return }
+        notificationManager.notificationCenter()
+        
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -26,6 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 self.window?.alpha = 1
             }
         }
+        notificationManager.refreshBadgeNumber(badge: 0)
     }
     
     
@@ -34,6 +38,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             UIView.animate(withDuration: 0.5) {
                 self.window?.alpha = 0.2
             }
+            self.notificationManager.scheduleNotification()
         }
     }
     
