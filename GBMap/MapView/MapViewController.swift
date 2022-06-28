@@ -18,7 +18,7 @@ class MapViewController: UIViewController {
     var route: GMSPolyline?
     var routePath: GMSMutablePath?
     var currentLocation = CLLocationCoordinate2D(latitude: 59.939095, longitude: 30.315868)
-    var locationManager: CLLocationManager?
+    var locationManager = LocationManager.instance
     
     // MARK: - Life cycle
     
@@ -99,7 +99,7 @@ class MapViewController: UIViewController {
         let newPath = GMSMutablePath()
         newRoute.strokeColor = .blue
         newRoute.strokeWidth = 10.0
-        locationManager?.stopUpdatingLocation()
+        locationManager.stopUpdatingLocation()
         let locations = RealmService.shared.loadListOfLocation()
         routePath?.removeAllCoordinates()
         for i in 0..<locations.count {
@@ -114,11 +114,11 @@ class MapViewController: UIViewController {
     
     @objc func playButtonTapped(sender: UIButton) {
         setupRoute()
-        locationManager?.startUpdatingLocation()
+        locationManager.startUpdatingLocation()
     }
     
     @objc func stopButtonTapped(sender: UIButton) {
-        locationManager?.stopUpdatingLocation()
+        locationManager.stopUpdatingLocation()
         RealmService.shared.deleteAllLocations()
         guard let pointsCount = routePath?.count() else { return }
         var locations = Array<Location>()
@@ -135,21 +135,7 @@ class MapViewController: UIViewController {
     }
 }
 
-// MARK: - Extensions CLLocationManagerDelegate
-
-extension MapViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
-        routePath?.add(location.coordinate)
-        route?.path = routePath
-        let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 15)
-        mapView.animate(to: position)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
-    }
-}
+// MARK: - Extensions GMSMapViewDelegate
 
 extension MapViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
@@ -160,22 +146,28 @@ extension MapViewController: GMSMapViewDelegate {
 
 extension MapViewController {
     private func configureLocationManager() {
-        locationManager = CLLocationManager()
-        locationManager?.allowsBackgroundLocationUpdates = true
-        locationManager?.pausesLocationUpdatesAutomatically = false
-        locationManager?.startMonitoringSignificantLocationChanges()
-        locationManager?.requestWhenInUseAuthorization()
-        locationManager?.delegate = self
+        locationManager
+            .location
+            .asObservable()
+            .bind { [weak self] location in
+                guard let location = location else { return }
+                self?.routePath?.add(location.coordinate)
+                self?.route?.path = self?.routePath
+                let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 17)
+                self?.mapView.animate(to: position)
+                
+            }
     }
     
     private func updateCurrentLocation() {
-        locationManager?.requestLocation()
-        guard let location = locationManager?.location?.coordinate else {
+        locationManager.requestLocation()
+        guard let newLocation = locationManager.location.value else {
             return
         }
-        currentLocation = location
-        updateCamera(location: location)
-        createMark(location: location)
+        let location2D = CLLocationCoordinate2D(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude)
+        currentLocation = location2D
+        updateCamera(location: location2D)
+        createMark(location: location2D)
     }
     
     private func setupCamera(location: CLLocationCoordinate2D) {
