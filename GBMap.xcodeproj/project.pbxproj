@@ -110,8 +110,8 @@
 		A2ACCC8D285E4C11002A2EFE /* MapView */ = {
 			isa = PBXGroup;
 			children = (
-				A29E85E82854F975003FF0CB /* MapViewController.swift */,
 				A2ACCC86285E46E2002A2EFE /* MapViewModel.swift */,
+				A29E85E82854F975003FF0CB /* MapViewController.swift */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
