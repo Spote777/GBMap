@@ -10,6 +10,7 @@ import Foundation
 final class MapViewModel {
 
     let value: Int
+    
     init(value: Int) {
         self.value = value
     }
