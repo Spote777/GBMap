@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0919D787630F59AE00ABA40F /* Pods_GBMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0300D21E12852A44E1993B9 /* Pods_GBMap.framework */; };
+		A243A62A286AC7C4008B5A74 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A243A629286AC7C4008B5A74 /* LocationManager.swift */; };
+		A276712D286AD01600A1B20C /* Lesson6.md in Resources */ = {isa = PBXBuildFile; fileRef = A276712C286ACFAC00A1B20C /* Lesson6.md */; };
 		A29E85E52854F975003FF0CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29E85E42854F975003FF0CB /* AppDelegate.swift */; };
 		A29E85E72854F975003FF0CB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29E85E62854F975003FF0CB /* SceneDelegate.swift */; };
 		A29E85E92854F975003FF0CB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29E85E82854F975003FF0CB /* MapViewController.swift */; };
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		0C3BF42C10987D54E0F84403 /* Pods-GBMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GBMap.debug.xcconfig"; path = "Target Support Files/Pods-GBMap/Pods-GBMap.debug.xcconfig"; sourceTree = "<group>"; };
 		63767B065ECD1DA2B42D4628 /* Pods-GBMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GBMap.release.xcconfig"; path = "Target Support Files/Pods-GBMap/Pods-GBMap.release.xcconfig"; sourceTree = "<group>"; };
+		A243A629286AC7C4008B5A74 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		A276712C286ACFAC00A1B20C /* Lesson6.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Lesson6.md; sourceTree = "<group>"; };
 		A29E85E12854F975003FF0CB /* GBMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A29E85E42854F975003FF0CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A29E85E62854F975003FF0CB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,9 +58,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A243A628286AC7B6008B5A74 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A243A629286AC7C4008B5A74 /* LocationManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		A29E85D82854F975003FF0CB = {
 			isa = PBXGroup;
 			children = (
+				A276712C286ACFAC00A1B20C /* Lesson6.md */,
 				A29E85E32854F975003FF0CB /* GBMap */,
 				A29E85E22854F975003FF0CB /* Products */,
 				B9461E78CD2CD01CB02D2170 /* Pods */,
@@ -81,6 +94,7 @@
 				A2ACCC8E285E4C7B002A2EFE /* LoginView */,
 				A2ACCC8D285E4C11002A2EFE /* MapView */,
 				A2ACCC7F285E447C002A2EFE /* Realm */,
+				A243A628286AC7B6008B5A74 /* Services */,
 				A29E85EA2854F975003FF0CB /* Main.storyboard */,
 				A29E85ED2854F978003FF0CB /* Assets.xcassets */,
 				A29E85EF2854F978003FF0CB /* LaunchScreen.storyboard */,
@@ -205,6 +219,7 @@
 				A29E85F12854F978003FF0CB /* LaunchScreen.storyboard in Resources */,
 				A29E85EE2854F978003FF0CB /* Assets.xcassets in Resources */,
 				A29E85EC2854F975003FF0CB /* Main.storyboard in Resources */,
+				A276712D286AD01600A1B20C /* Lesson6.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +291,7 @@
 			files = (
 				A2ACCC90285E4C8A002A2EFE /* LoginViewController.swift in Sources */,
 				A29E85E92854F975003FF0CB /* MapViewController.swift in Sources */,
+				A243A62A286AC7C4008B5A74 /* LocationManager.swift in Sources */,
 				A29E85E52854F975003FF0CB /* AppDelegate.swift in Sources */,
 				A2ACCC85285E44BD002A2EFE /* Location.swift in Sources */,
 				A2ACCC8A285E4BD1002A2EFE /* Router.swift in Sources */,
