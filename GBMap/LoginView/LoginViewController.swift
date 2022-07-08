@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class LoginViewController: UIViewController {
     
@@ -15,9 +17,10 @@ class LoginViewController: UIViewController {
     
     // MARK: - @IBOutlet
     
+    @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loginTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
-
+    
     // MARK: - Life cycle
     
     override func viewDidLoad() {
@@ -27,9 +30,10 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        configureLoginBindings()
         title = "Авторизация"
     }
-
+    
     // MARK: - @IBAction
     
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -90,4 +94,23 @@ class LoginViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func configureLoginBindings() {
+             Observable
+                 .combineLatest(
+                     loginTextfield.rx.text,
+                     passwordTextfield.rx.text
+                 )
+                 .map { login, password in
+                     return !(login ?? "").isEmpty && (password ?? "").count >= 3
+                 }
+                 .bind { [weak loginButton] inputFilled in
+                 loginButton?.isEnabled = inputFilled
+                     if inputFilled == true {
+                         loginButton?.alpha = 1
+                     } else {
+                         loginButton?.alpha = 0.5
+                     }
+             }
+         }
 }

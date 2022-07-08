@@ -96,6 +96,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="EaV-no-UEr"/>
                     <connections>
+                        <outlet property="loginButton" destination="i2c-zN-tqv" id="fWT-nd-nnT"/>
                         <outlet property="loginTextfield" destination="vpz-AQ-tsD" id="uta-hV-uTI"/>
                         <outlet property="passwordTextfield" destination="9HD-WA-KcN" id="MLm-lt-lmY"/>
                     </connections>
