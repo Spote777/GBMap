@@ -23,6 +23,7 @@
 		A2ACCC8A285E4BD1002A2EFE /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACCC89285E4BD1002A2EFE /* Router.swift */; };
 		A2ACCC8C285E4BF1002A2EFE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACCC8B285E4BF1002A2EFE /* User.swift */; };
 		A2ACCC90285E4C8A002A2EFE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACCC8F285E4C8A002A2EFE /* LoginViewController.swift */; };
+		A2DC61E528782A9F0093C556 /* UIImageScaleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC61E428782A9F0093C556 /* UIImageScaleExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		A2ACCC89285E4BD1002A2EFE /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		A2ACCC8B285E4BF1002A2EFE /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A2ACCC8F285E4C8A002A2EFE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A2DC61E428782A9F0093C556 /* UIImageScaleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageScaleExtension.swift; sourceTree = "<group>"; };
 		D0300D21E12852A44E1993B9 /* Pods_GBMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GBMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -91,6 +93,7 @@
 		A29E85E32854F975003FF0CB /* GBMap */ = {
 			isa = PBXGroup;
 			children = (
+				A2DC61E328782A900093C556 /* Helper */,
 				A29E85E42854F975003FF0CB /* AppDelegate.swift */,
 				A29E85E62854F975003FF0CB /* SceneDelegate.swift */,
 				A2ACCC88285E4BC5002A2EFE /* Router */,
@@ -139,6 +142,14 @@
 				A2ACCC8F285E4C8A002A2EFE /* LoginViewController.swift */,
 			);
 			path = LoginView;
+			sourceTree = "<group>";
+		};
+		A2DC61E328782A900093C556 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				A2DC61E428782A9F0093C556 /* UIImageScaleExtension.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		B9461E78CD2CD01CB02D2170 /* Pods */ = {
@@ -292,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2DC61E528782A9F0093C556 /* UIImageScaleExtension.swift in Sources */,
 				A2ACCC90285E4C8A002A2EFE /* LoginViewController.swift in Sources */,
 				A29E85E92854F975003FF0CB /* MapViewController.swift in Sources */,
 				A243A62A286AC7C4008B5A74 /* LocationManager.swift in Sources */,
